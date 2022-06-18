@@ -19,12 +19,6 @@
     <Compile Update="main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="receiveFile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="sendFile.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="history.cs">
       <SubType>Form</SubType>
     </Compile>

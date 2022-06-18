@@ -179,7 +179,6 @@ namespace AppCHAT
             listChatForm[presentForm].frname = frname;
             listFileForm[presentForm].ipTo = ipAdd[index];
 
-
             listChatForm[presentForm].Show();
             listFileForm[presentForm].Show();
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GiaBao\\Downloads\\New folder (3)\\AppCHAT\\AppCHAT\\AppCHAT.csproj": {}
+    "D:\\GitHub\\AppCHAT\\AppCHAT\\AppCHAT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GiaBao\\Downloads\\New folder (3)\\AppCHAT\\AppCHAT\\AppCHAT.csproj": {
+    "D:\\GitHub\\AppCHAT\\AppCHAT\\AppCHAT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GiaBao\\Downloads\\New folder (3)\\AppCHAT\\AppCHAT\\AppCHAT.csproj",
+        "projectUniqueName": "D:\\GitHub\\AppCHAT\\AppCHAT\\AppCHAT.csproj",
         "projectName": "AppCHAT",
-        "projectPath": "C:\\Users\\GiaBao\\Downloads\\New folder (3)\\AppCHAT\\AppCHAT\\AppCHAT.csproj",
+        "projectPath": "D:\\GitHub\\AppCHAT\\AppCHAT\\AppCHAT.csproj",
         "packagesPath": "C:\\Users\\GiaBao\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GiaBao\\Downloads\\New folder (3)\\AppCHAT\\AppCHAT\\obj\\",
+        "outputPath": "D:\\GitHub\\AppCHAT\\AppCHAT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GiaBao\\AppData\\Roaming\\NuGet\\NuGet.Config",

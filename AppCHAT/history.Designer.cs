@@ -43,9 +43,9 @@
             // 
             // pnlBuddy
             // 
-            this.pnlBuddy.Location = new System.Drawing.Point(0, 50);
+            this.pnlBuddy.Location = new System.Drawing.Point(2, 49);
             this.pnlBuddy.Name = "pnlBuddy";
-            this.pnlBuddy.Size = new System.Drawing.Size(140, 436);
+            this.pnlBuddy.Size = new System.Drawing.Size(140, 440);
             this.pnlBuddy.TabIndex = 5;
             // 
             // btnScan
@@ -57,6 +57,7 @@
             this.btnScan.Size = new System.Drawing.Size(82, 45);
             this.btnScan.TabIndex = 4;
             this.btnScan.UseVisualStyleBackColor = true;
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // history
             // 

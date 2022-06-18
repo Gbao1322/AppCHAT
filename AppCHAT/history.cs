@@ -32,7 +32,10 @@ namespace AppCHAT
         List<string> listName = new List<string>();
         void Load()
         {
+            buddyList.Clear();
+            listName.Clear();   
             pnlBuddy.Controls.Clear();
+            pnlChat.Controls.Clear();
 
             foreach (data dt in listData.Instance.List)
             {
@@ -59,8 +62,8 @@ namespace AppCHAT
 
 
                 buddy.ForeColor = Color.White;
-               
                 pnlBuddy.Controls.Add(buddy);
+                buddy.Show();
                 buddyList.Add(buddy);
             }
         }
@@ -75,7 +78,12 @@ namespace AppCHAT
 
         private void history_Load(object sender, EventArgs e)
         {
+            Load();
+        }
 
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+            Load();
         }
     }
 }

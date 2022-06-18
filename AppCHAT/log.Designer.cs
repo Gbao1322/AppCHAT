@@ -40,6 +40,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(610, 484);
             this.listBox1.TabIndex = 1;
+            this.listBox1.VisibleChanged += new System.EventHandler(this.listBox1_VisibleChanged);
             // 
             // log
             // 
@@ -50,7 +51,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "log";
             this.Text = "log";
-            this.Load += new System.EventHandler(this.log_Load);
             this.ResumeLayout(false);
 
         }

@@ -22,31 +22,14 @@ namespace AppCHAT
             sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
         }
-        //public string GetHostName(string ipAddress)
-        //{
-        //    try
-        //    {
-        //        IPHostEntry entry = Dns.GetHostEntry(ipAddress);
-        //        if (entry != null)
-        //            return entry.HostName;
-        //    }
-        //    catch (SocketException) { }
-        //    return null;
-        //}
-        //public static void WriteData()
-        //{
-        //    var excel = new ExcelMapper();
-        //    excel.Save(Application.StartupPath + @"\data.xlsx", listData.Instance.List);
-        //}
+
         void SaveLog(string totalMsg)
         {
             data dt = new data();
             dt.Name = frname;
-            char[] charsToTrim = { '?'};
-            string result = totalMsg.Split('-')[2].Trim(charsToTrim);
-            dt.Message = result;
+            char[] charsToTrim = {'\0'};
+            dt.Message = totalMsg.Trim(charsToTrim);
             listData.Instance.List.Add(dt);
-            
         }
 
         #region chat

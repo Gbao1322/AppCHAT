@@ -27,9 +27,10 @@ namespace AppCHAT
             }
         }
 
-        private void log_Load(object sender, EventArgs e)
+
+        private void listBox1_VisibleChanged(object sender, EventArgs e)
         {
-            LoadHistory();
+            LoadHistory(); 
         }
     }
 }
