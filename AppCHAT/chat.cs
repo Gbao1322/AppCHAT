@@ -11,7 +11,7 @@ namespace AppCHAT
         Socket sck;
         string myname;
         public bool start = false;
-        public string ipTo="null";
+        public string ipTo;
         EndPoint eplocal, epremote;
         public chat()
         {
@@ -66,7 +66,7 @@ namespace AppCHAT
             return null;
         }
         #endregion
-        
+
         private void closeall(IAsyncResult result)
         {
             sck.EndReceiveFrom(result, ref epremote);
@@ -86,8 +86,10 @@ namespace AppCHAT
                     receiveddata = (byte[])aresult.AsyncState;
                     ASCIIEncoding eencoding = new ASCIIEncoding();
                     string receivedmessage = eencoding.GetString(receiveddata);
-                    listBox1.Items.Add(receivedmessage);
-                    SaveLog(receivedmessage);
+
+                        listBox1.Items.Add(receivedmessage);
+                        SaveLog(receivedmessage);
+
 
                 }
                 byte[] buffer = new byte[1500];
@@ -143,7 +145,6 @@ namespace AppCHAT
                 MessageBox.Show(ex.Message.ToString(), "Runtime Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void chat_FormClosing(object sender, FormClosingEventArgs e)
         {
             Disconnect();
@@ -153,7 +154,6 @@ namespace AppCHAT
         {
             listBox1.Items.Add(ipTo);
             Connect();
-
         }
 
         public void Disconnect()
@@ -163,9 +163,7 @@ namespace AppCHAT
                 AsyncCallback b = new AsyncCallback(closeall);
                 start = false;
             }
-            catch (Exception ex)
-            {
-            }
+            catch (Exception ex) { }
         }
 
         #endregion

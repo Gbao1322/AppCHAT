@@ -38,6 +38,7 @@ namespace AppCHAT
                 }
             }
         }
+
         protected override async void OnShown(EventArgs e)
         {
             // Listen
@@ -121,9 +122,6 @@ namespace AppCHAT
             else
                 MessageBox.Show("File successfully received");
             resetControls1();
-
-            //for keep sending and receiving files:
-            Application.Restart();
         }
 
     }

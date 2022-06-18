@@ -31,8 +31,7 @@
             this.btnScan = new System.Windows.Forms.Button();
             this.pnlBuddy = new System.Windows.Forms.Panel();
             this.pnlChat = new System.Windows.Forms.Panel();
-            this.pnlSendFile = new System.Windows.Forms.Panel();
-            this.pnlReceiveFile = new System.Windows.Forms.Panel();
+            this.pnlFile = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // btnScan
@@ -60,21 +59,13 @@
             this.pnlChat.Size = new System.Drawing.Size(610, 410);
             this.pnlChat.TabIndex = 3;
             // 
-            // pnlSendFile
+            // pnlFile
             // 
-            this.pnlSendFile.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlSendFile.Location = new System.Drawing.Point(145, 416);
-            this.pnlSendFile.Name = "pnlSendFile";
-            this.pnlSendFile.Size = new System.Drawing.Size(305, 70);
-            this.pnlSendFile.TabIndex = 3;
-            // 
-            // pnlReceiveFile
-            // 
-            this.pnlReceiveFile.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlReceiveFile.Location = new System.Drawing.Point(450, 416);
-            this.pnlReceiveFile.Name = "pnlReceiveFile";
-            this.pnlReceiveFile.Size = new System.Drawing.Size(305, 70);
-            this.pnlReceiveFile.TabIndex = 3;
+            this.pnlFile.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlFile.Location = new System.Drawing.Point(145, 416);
+            this.pnlFile.Name = "pnlFile";
+            this.pnlFile.Size = new System.Drawing.Size(610, 70);
+            this.pnlFile.TabIndex = 3;
             // 
             // buddy
             // 
@@ -83,8 +74,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(755, 490);
-            this.Controls.Add(this.pnlReceiveFile);
-            this.Controls.Add(this.pnlSendFile);
+            this.Controls.Add(this.pnlFile);
             this.Controls.Add(this.pnlChat);
             this.Controls.Add(this.pnlBuddy);
             this.Controls.Add(this.btnScan);
@@ -99,7 +89,6 @@
         private Button btnScan;
         private Panel pnlBuddy;
         private Panel pnlChat;
-        private Panel pnlSendFile;
-        private Panel pnlReceiveFile;
+        private Panel pnlFile;
     }
 }

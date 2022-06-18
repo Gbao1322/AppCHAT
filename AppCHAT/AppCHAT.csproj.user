@@ -7,6 +7,9 @@
     <Compile Update="chat.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="file.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="fileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>

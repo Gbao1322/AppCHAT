@@ -10,15 +10,15 @@ namespace AppCHAT
         List<chat> listChatForm = new List<chat>();
         //List<sendFile> listSFForm = new List<sendFile>();
         //List<receiveFile> listRFForm = new List<receiveFile>();
+        List<file> listFileForm = new List<file>();
 
-        sendFile sf = new sendFile() { TopLevel = false, TopMost = true };
-        receiveFile rcf = new receiveFile() { TopLevel = false, TopMost = true };
+        string myip;
         int presentForm = -1;
         public buddy()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-
+            myip = getIPV4();
             //initialize buddy's chat form
             for (int i = 0; i < 9; i++)
             {
@@ -26,14 +26,10 @@ namespace AppCHAT
                 listChatForm.Add(ct);
                 pnlChat.Controls.Add(ct);
 
-                //sendFile sf = new sendFile() { TopLevel = false, TopMost = true };
-                //listSFForm.Add(sf);
-                pnlSendFile.Controls.Add(sf);
-                sf.Show();
-                //receiveFile rcf = new receiveFile() { TopLevel = false, TopMost = true };
-                //listRFForm.Add(rcf);
-                pnlReceiveFile.Controls.Add(rcf);
-                rcf.Show();
+                file f = new file() { TopLevel = false, TopMost = true };
+                listFileForm.Add(f);
+                pnlFile.Controls.Add(f);
+
             }
         }
 
@@ -102,7 +98,7 @@ namespace AppCHAT
                 a[i] = i;
             foreach (int i in a)
             {
-                if (i == int.Parse(gw.Split('.')[3]) /*|| i == int.Parse(myip.Split('.')[3])*/)
+                if (i == int.Parse(gw.Split('.')[3]) || i == int.Parse(myip.Split('.')[3]))
                     continue;
                 Thread t = new Thread(() =>
                 {
@@ -136,7 +132,7 @@ namespace AppCHAT
             pnlBuddy.Controls.Clear();
             ipAdd.Clear();
             hostName.Clear();
-            ping(Gateway(), getIPV4());
+            ping(Gateway(), myip);
             Thread.Sleep(5000);
 
             for (int i = 0; i < hostName.Count; i++)
@@ -165,15 +161,19 @@ namespace AppCHAT
             if (presentForm != -1)
             {
                 listChatForm[presentForm].Hide();
+                listFileForm[presentForm].Hide();
                 //listSFForm[presentForm].Hide();
                 //listRFForm[presentForm].Hide();
             }
             presentForm = index;
+            Random rnd = new Random();
             listChatForm[presentForm].ipTo = ipAdd[index];
-            //listSFForm[presentForm].ipTo = ipAdd[index];
-
-
             listChatForm[presentForm].Show();
+
+            listFileForm[presentForm].ipTo = ipAdd[index];
+            listFileForm[presentForm].port_ = presentForm*5555;
+            listFileForm[presentForm].Show();
+
             //listSFForm[presentForm].Show();
             //listRFForm[presentForm].Show();
         }
