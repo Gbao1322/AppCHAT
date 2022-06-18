@@ -8,17 +8,14 @@ namespace AppCHAT
     {
         //this app can show 10 buddy 
         List<chat> listChatForm = new List<chat>();
-        //List<sendFile> listSFForm = new List<sendFile>();
-        //List<receiveFile> listRFForm = new List<receiveFile>();
         List<file> listFileForm = new List<file>();
 
-        string myip;
         int presentForm = -1;
         public buddy()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            myip = getIPV4();
+
             //initialize buddy's chat form
             for (int i = 0; i < 9; i++)
             {
@@ -26,10 +23,9 @@ namespace AppCHAT
                 listChatForm.Add(ct);
                 pnlChat.Controls.Add(ct);
 
-                file f = new file() { TopLevel = false, TopMost = true };
-                listFileForm.Add(f);
-                pnlFile.Controls.Add(f);
-
+                file fl = new file() { TopLevel = false, TopMost = true };
+                listFileForm.Add(fl);
+                pnlFile.Controls.Add(fl);
             }
         }
 
@@ -113,11 +109,11 @@ namespace AppCHAT
                         if (pingable)
                         {
                             ipAdd.Add(ip);
-                            string hostName_ = GetHostName(ip);
-                            if (hostName_ != null)
-                                hostName.Add(hostName_);
-                            else
-                                hostName.Add(ip);
+                            //string hostName_ = GetHostName(ip);
+                            //if (hostName_ != null)
+                            //    hostName.Add(hostName_);
+                            //else
+                            //    hostName.Add(ip);
                         }
                     }
                     catch (PingException) { }
@@ -132,8 +128,17 @@ namespace AppCHAT
             pnlBuddy.Controls.Clear();
             ipAdd.Clear();
             hostName.Clear();
-            ping(Gateway(), myip);
+            ping(Gateway(), getIPV4());
             Thread.Sleep(5000);
+
+            foreach (string ip in ipAdd)
+            {
+                string hostName_ = GetHostName(ip);
+                if (hostName_ != null)
+                    hostName.Add(hostName_);
+                else
+                    hostName.Add(ip);
+            }
 
             for (int i = 0; i < hostName.Count; i++)
             {
@@ -151,31 +156,32 @@ namespace AppCHAT
                 buddy.Size = new System.Drawing.Size(140, 50);
                 buddy.Text = hostName[i];
                 buddy.UseVisualStyleBackColor = false;
-                buddy.Click += (sender, EventArgs) => { buttonNext_Click(sender, EventArgs, int.Parse(buddy.Name)); };
+                buddy.Click += (sender, EventArgs) => { buttonNext_Click(sender, EventArgs, int.Parse(buddy.Name), hostName[i-1]); };
+
+                buddy.TextAlign = ContentAlignment.MiddleRight;
+                buddy.BackgroundImage = imageList4.Images[0];
+                buddy.BackgroundImageLayout = ImageLayout.Stretch;
+
                 pnlBuddy.Controls.Add(buddy);
                 buddyList.Add(buddy);
             }
         }
-        void buttonNext_Click(object sender, EventArgs e, int index)
+        void buttonNext_Click(object sender, EventArgs e, int index, string frname)
         {
+
             if (presentForm != -1)
             {
                 listChatForm[presentForm].Hide();
                 listFileForm[presentForm].Hide();
-                //listSFForm[presentForm].Hide();
-                //listRFForm[presentForm].Hide();
             }
             presentForm = index;
-            Random rnd = new Random();
             listChatForm[presentForm].ipTo = ipAdd[index];
-            listChatForm[presentForm].Show();
-
+            listChatForm[presentForm].frname = frname;
             listFileForm[presentForm].ipTo = ipAdd[index];
-            listFileForm[presentForm].port_ = presentForm*5555;
-            listFileForm[presentForm].Show();
 
-            //listSFForm[presentForm].Show();
-            //listRFForm[presentForm].Show();
+
+            listChatForm[presentForm].Show();
+            listFileForm[presentForm].Show();
         }
 
     }

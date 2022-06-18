@@ -17,12 +17,12 @@ namespace AppCHAT
         {
             InitializeComponent();
         }
-
-        private void resetControls1()
+        private void resetControls()
         {
             progressBar1.Style = ProgressBarStyle.Marquee;
             textBox1.Text = "Waiting for connection...";
         }
+
 
         public static byte[] DecompressBytes(byte[] bytes)
         {
@@ -38,7 +38,6 @@ namespace AppCHAT
                 }
             }
         }
-
         protected override async void OnShown(EventArgs e)
         {
             // Listen
@@ -73,10 +72,7 @@ namespace AppCHAT
 
             // Set save location
             SaveFileDialog sfd = new SaveFileDialog();
-
-            string pathS = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Chat App"; // this is the path that you are checking.
-            if (Directory.Exists(pathS))
-                sfd.InitialDirectory = pathS;
+            sfd.InitialDirectory = Path.GetFullPath(@"\files");
             sfd.CreatePrompt = false;
             sfd.OverwritePrompt = true;
             sfd.FileName = fileName;
@@ -119,10 +115,12 @@ namespace AppCHAT
                 MessageBox.Show("Decompress successful!");
             }
             //
+
             else
                 MessageBox.Show("File successfully received");
-            resetControls1();
+            resetControls();
+            Application.Restart();
+            Environment.Exit(0);
         }
-
     }
 }

@@ -35,21 +35,23 @@
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.listBox1.BackColor = System.Drawing.Color.White;
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(610, 364);
+            this.listBox1.Size = new System.Drawing.Size(610, 362);
             this.listBox1.TabIndex = 0;
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(489, 378);
+            this.btnSend.BackgroundImage = global::AppCHAT.Properties.Resources.sent;
+            this.btnSend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSend.Location = new System.Drawing.Point(526, 376);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(118, 27);
+            this.btnSend.Size = new System.Drawing.Size(72, 32);
             this.btnSend.TabIndex = 6;
-            this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
@@ -57,7 +59,7 @@
             // 
             this.tbxMsg.Location = new System.Drawing.Point(5, 379);
             this.tbxMsg.Name = "tbxMsg";
-            this.tbxMsg.Size = new System.Drawing.Size(479, 27);
+            this.tbxMsg.Size = new System.Drawing.Size(516, 27);
             this.tbxMsg.TabIndex = 5;
             this.tbxMsg.Text = "Type message here...";
             // 

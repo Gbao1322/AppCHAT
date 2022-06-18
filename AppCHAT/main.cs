@@ -38,9 +38,15 @@ namespace AppCHAT
             bd.Show();
             fe.Hide();
             st.Hide();
-            btnBuddy.BackColor = System.Drawing.Color.Gainsboro;
+            btnBuddy.BackColor = Color.DarkRed;
             btnFile.BackColor = System.Drawing.Color.Transparent;
             btnSetting.BackColor = System.Drawing.Color.Transparent;
+            btnBuddy.ForeColor = Color.White;
+            btnFile.ForeColor = Color.Black;
+            btnSetting.ForeColor = Color.Black;
+            btnBuddy.BackgroundImage = imageList2.Images[0];
+            btnFile.BackgroundImage = imageList2.Images[4];
+            btnSetting.BackgroundImage = imageList2.Images[5];
         }
 
         private void btnFile_Click(object sender, EventArgs e)
@@ -49,8 +55,14 @@ namespace AppCHAT
             fe.Show();
             st.Hide();
             btnBuddy.BackColor = System.Drawing.Color.Transparent;
-            btnFile.BackColor = System.Drawing.Color.Gainsboro;
+            btnFile.BackColor = System.Drawing.Color.DarkRed;
             btnSetting.BackColor = System.Drawing.Color.Transparent;
+            btnBuddy.ForeColor = Color.Black;
+            btnFile.ForeColor = Color.White;
+            btnSetting.ForeColor = Color.Black;
+            btnBuddy.BackgroundImage = imageList2.Images[3];
+            btnFile.BackgroundImage = imageList2.Images[1];
+            btnSetting.BackgroundImage = imageList2.Images[5];
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
@@ -60,7 +72,14 @@ namespace AppCHAT
             st.Show();
             btnBuddy.BackColor = System.Drawing.Color.Transparent;
             btnFile.BackColor = System.Drawing.Color.Transparent;
-            btnSetting.BackColor = System.Drawing.Color.Gainsboro;
+            btnSetting.BackColor = System.Drawing.Color.DarkRed;
+            btnBuddy.ForeColor = Color.Black;
+            btnFile.ForeColor = Color.Black ;
+            btnSetting.ForeColor = Color.White;
+            btnBuddy.BackgroundImage = imageList2.Images[3];
+            btnFile.BackgroundImage = imageList2.Images[4];
+            btnSetting.BackgroundImage = imageList2.Images[2];
+
         }
 
         public string getListeningIP(NetworkInterfaceType _type)
@@ -99,5 +118,9 @@ namespace AppCHAT
             return null;
         }
 
+        private void btnBuddy_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

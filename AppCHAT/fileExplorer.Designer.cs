@@ -52,6 +52,7 @@
             this.imageList1.Images.SetKeyName(8, "html.png");
             this.imageList1.Images.SetKeyName(9, "xlsx.png");
             this.imageList1.Images.SetKeyName(10, "other.png");
+            this.imageList1.Images.SetKeyName(11, "Picture19.png");
             // 
             // lFile
             // 
@@ -63,21 +64,23 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(651, 5);
+            this.btnRefresh.BackgroundImage = global::AppCHAT.Properties.Resources.refresh;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.Location = new System.Drawing.Point(666, 5);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(94, 35);
+            this.btnRefresh.Size = new System.Drawing.Size(77, 37);
             this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnDecompress
             // 
-            this.btnDecompress.Location = new System.Drawing.Point(512, 5);
+            this.btnDecompress.BackgroundImage = global::AppCHAT.Properties.Resources.Picture19;
+            this.btnDecompress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDecompress.Location = new System.Drawing.Point(597, 3);
             this.btnDecompress.Name = "btnDecompress";
-            this.btnDecompress.Size = new System.Drawing.Size(133, 35);
+            this.btnDecompress.Size = new System.Drawing.Size(48, 39);
             this.btnDecompress.TabIndex = 1;
-            this.btnDecompress.Text = "Decompress File";
             this.btnDecompress.UseVisualStyleBackColor = true;
             this.btnDecompress.Click += new System.EventHandler(this.btnDecompress_Click);
             // 
@@ -85,11 +88,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(755, 490);
             this.Controls.Add(this.btnDecompress);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lFile);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fileExplorer";
             this.Text = "fileExplorer";

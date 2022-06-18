@@ -28,54 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(file));
             this.cbxCompress = new System.Windows.Forms.CheckBox();
-            this.btnSend = new System.Windows.Forms.Button();
             this.tbxFile = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnSendFile = new System.Windows.Forms.Button();
+            this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // cbxCompress
             // 
             this.cbxCompress.AutoSize = true;
-            this.cbxCompress.Location = new System.Drawing.Point(475, 7);
+            this.cbxCompress.Location = new System.Drawing.Point(487, 10);
             this.cbxCompress.Name = "cbxCompress";
             this.cbxCompress.Size = new System.Drawing.Size(123, 24);
-            this.cbxCompress.TabIndex = 11;
+            this.cbxCompress.TabIndex = 13;
             this.cbxCompress.Text = "Compress File";
             this.cbxCompress.UseVisualStyleBackColor = true;
             // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(475, 39);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(123, 28);
-            this.btnSend.TabIndex = 10;
-            this.btnSend.TabStop = false;
-            this.btnSend.Text = "Send File";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSendFile_Click);
-            // 
             // tbxFile
             // 
-            this.tbxFile.Location = new System.Drawing.Point(12, 5);
-            this.tbxFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbxFile.Location = new System.Drawing.Point(2, 8);
             this.tbxFile.Name = "tbxFile";
-            this.tbxFile.ReadOnly = true;
-            this.tbxFile.Size = new System.Drawing.Size(457, 27);
-            this.tbxFile.TabIndex = 9;
-            this.tbxFile.TabStop = false;
+            this.tbxFile.Size = new System.Drawing.Size(478, 27);
+            this.tbxFile.TabIndex = 12;
             this.tbxFile.Text = "Click to select file";
             this.tbxFile.Click += new System.EventHandler(this.tbxFile_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 39);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.progressBar1.MarqueeAnimationSpeed = 1;
+            this.progressBar1.Location = new System.Drawing.Point(3, 38);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(457, 27);
-            this.progressBar1.TabIndex = 8;
+            this.progressBar1.Size = new System.Drawing.Size(477, 25);
+            this.progressBar1.TabIndex = 11;
+            // 
+            // btnSendFile
+            // 
+            this.btnSendFile.Location = new System.Drawing.Point(487, 36);
+            this.btnSendFile.Name = "btnSendFile";
+            this.btnSendFile.Size = new System.Drawing.Size(118, 27);
+            this.btnSendFile.TabIndex = 10;
+            this.btnSendFile.Text = "Send File";
+            this.btnSendFile.UseVisualStyleBackColor = true;
+            this.btnSendFile.Click += new System.EventHandler(this.btnSendFileFile_Click);
+            // 
+            // imageList3
+            // 
+            this.imageList3.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
+            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList3.Images.SetKeyName(0, "Picture17.png");
             // 
             // file
             // 
@@ -83,9 +86,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 70);
             this.Controls.Add(this.cbxCompress);
-            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.tbxFile);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.btnSendFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "file";
             this.Text = "file";
@@ -97,8 +100,9 @@
         #endregion
 
         private CheckBox cbxCompress;
-        private Button btnSend;
         private TextBox tbxFile;
         private ProgressBar progressBar1;
+        private Button btnSendFile;
+        private ImageList imageList3;
     }
 }

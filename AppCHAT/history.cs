@@ -49,13 +49,17 @@ namespace AppCHAT
                 buddy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
                 buddy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
                 buddy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                buddy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                buddy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 buddy.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
                 buddy.Name = i.ToString();
                 buddy.Size = new System.Drawing.Size(140, 50);
                 buddy.Text = listName[i];
                 buddy.UseVisualStyleBackColor = false;
                 buddy.Click += (sender, EventArgs) => { buttonNext_Click(sender, EventArgs, int.Parse(buddy.Name), buddy.Text); };
+
+
+                buddy.ForeColor = Color.White;
+               
                 pnlBuddy.Controls.Add(buddy);
                 buddyList.Add(buddy);
             }
@@ -67,6 +71,11 @@ namespace AppCHAT
             presentChatForm = index;
             listChatForm[presentChatForm].name = name;
             listChatForm[presentChatForm].Show();
+        }
+
+        private void history_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,7 +12,6 @@ namespace AppCHAT
 {
     public partial class sendFile : Form
     {
-        public string ipTo;
         const int PORT = 1723;
         public sendFile()
         {
@@ -20,6 +19,7 @@ namespace AppCHAT
             
         }
 
+        #region compress
         public static byte[] CompressBytes(byte[] bytes)
         {
             using (var outputStream = new MemoryStream())
@@ -31,32 +31,47 @@ namespace AppCHAT
                 return outputStream.ToArray();
             }
         }
+        public static byte[] DecompressBytes(byte[] bytes)
+        {
+            using (var inputStream = new MemoryStream(bytes))
+            {
+                using (var outputStream = new MemoryStream())
+                {
+                    using (var compressionStream = new GZipStream(inputStream, CompressionMode.Decompress))
+                    {
+                        compressionStream.CopyTo(outputStream);
+                    }
+                    return outputStream.ToArray();
+                }
+            }
+        }
 
+        #endregion
         void resetControls()
         {
-            tbxFile.Enabled = btnSend.Enabled = true;
-            btnSend.Text = "Send File";
+            tbxIp.Enabled = tbxFile.Enabled = btnSend.Enabled = true;
+            btnSend.Text = "Send";
             progressBar1.Value = 0;
             progressBar1.Style = ProgressBarStyle.Continuous;
         }
 
         string filePath;
-        bool compress = false;
-        private async void btnSendFileFile_Click(object sender, EventArgs e)
+        bool compress=false;
+        private async void button1_Click(object sender, EventArgs e)
         {
-            if (cbxCompress.Checked)
+            if(cbxCompress.Checked)
             {
                 compress = true;
-                var bytes = System.IO.File.ReadAllBytes(tbxFile.Text); 
+                var bytes = System.IO.File.ReadAllBytes(tbxFile.Text); // MAKE SURE TEMP.txt EXISTS!!!
                 bytes = CompressBytes(bytes);
                 string fileName = Path.GetFileName(tbxFile.Text);
-                filePath = fileName + ".gzip";
+                filePath= fileName+ ".gzip";
                 System.IO.File.WriteAllBytes(filePath, bytes);
             }
             else
-                filePath = tbxFile.Text;
+                filePath=tbxFile.Text;
 
-            tbxFile.Enabled = btnSend.Enabled = false;
+            tbxIp.Enabled = tbxFile.Enabled = btnSend.Enabled = false;
             progressBar1.Style = ProgressBarStyle.Marquee;
 
             // Parsing
@@ -64,7 +79,7 @@ namespace AppCHAT
             IPAddress address;
             FileInfo file;
             FileStream fileStream;
-            if (!IPAddress.TryParse(ipTo, out address))
+            if (!IPAddress.TryParse(tbxIp.Text, out address))
             {
                 MessageBox.Show("Error with IP Address");
                 resetControls();
@@ -143,26 +158,24 @@ namespace AppCHAT
                 DeleteAfterCompress(filePath);
         }
 
-        private void tbxFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            string pathS = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Chat App"; // this is the path that you are checking.
-            if (Directory.Exists(pathS))
-                ofd.InitialDirectory = pathS;
-            ofd.CheckFileExists = true;
-            ofd.CheckPathExists = true;
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                tbxFile.Text = ofd.FileName;
-        }
-
         void DeleteAfterCompress(string filePath)
         {
-            //delete temp zip file after sending
+            //delete temp zip file
             if (File.Exists(Path.Combine("", filePath)))
                 File.Delete(Path.Combine("", filePath));
             compress = false;
         }
+        private void textBox2_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.CheckFileExists = true;
+            ofd.CheckPathExists = true;
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                tbxFile.Text = ofd.FileName;
+            }
 
+        }
 
     }
 }

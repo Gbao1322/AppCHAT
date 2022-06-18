@@ -1,28 +1,24 @@
-﻿using System;
-using System.IO;
+﻿using System.Text;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
-using System.Windows.Forms;
 using System.IO.Compression;
-using System;
-using System.IO;
-using System.Text;
+using Ganss.Excel;
 
 namespace AppCHAT
 {
     public partial class file : Form
     {
-        public string ipTo;
-        public int port_;
-        int port;
         public file()
         {
             InitializeComponent();
-            port = port_;
         }
 
-        #region send
+        public string ipTo="null";
+
+        #region send file
+        const int PORT = 1723;
+
         public static byte[] CompressBytes(byte[] bytes)
         {
             using (var outputStream = new MemoryStream())
@@ -37,20 +33,19 @@ namespace AppCHAT
 
         void resetControls()
         {
-            tbxFile.Enabled = btnSend.Enabled = true;
-            btnSend.Text = "Send File";
+            btnSendFile.Text = "Send File";
             progressBar1.Value = 0;
             progressBar1.Style = ProgressBarStyle.Continuous;
         }
 
         string filePath;
         bool compress = false;
-        private async void btnSendFile_Click(object sender, EventArgs e)
+        private async void btnSendFileFile_Click(object sender, EventArgs e)
         {
             if (cbxCompress.Checked)
             {
                 compress = true;
-                var bytes = System.IO.File.ReadAllBytes(tbxFile.Text);
+                var bytes = System.IO.File.ReadAllBytes(tbxFile.Text); // MAKE SURE TEMP.txt EXISTS!!!
                 bytes = CompressBytes(bytes);
                 string fileName = Path.GetFileName(tbxFile.Text);
                 filePath = fileName + ".gzip";
@@ -59,11 +54,11 @@ namespace AppCHAT
             else
                 filePath = tbxFile.Text;
 
-            tbxFile.Enabled = btnSend.Enabled = false;
+            tbxFile.Enabled = btnSendFile.Enabled = false;
             progressBar1.Style = ProgressBarStyle.Marquee;
 
             // Parsing
-            btnSend.Text = "Preparing...";
+            btnSendFile.Text = "Preparing...";
             IPAddress address;
             FileInfo file;
             FileStream fileStream;
@@ -86,11 +81,11 @@ namespace AppCHAT
             }
 
             // Connecting
-            btnSend.Text = "Connecting...";
+            btnSendFile.Text = "Connecting...";
             TcpClient client = new TcpClient();
             try
             {
-                await client.ConnectAsync(address, port);
+                await client.ConnectAsync(address, PORT);
             }
             catch
             {
@@ -101,7 +96,7 @@ namespace AppCHAT
             NetworkStream ns = client.GetStream();
 
             // Send file info
-            btnSend.Text = "Sending file info...";
+            btnSendFile.Text = "Sending file info...";
             { // This syntax sugar is awesome
                 byte[] fileName = ASCIIEncoding.ASCII.GetBytes(file.Name);
                 byte[] fileNameLength = BitConverter.GetBytes(fileName.Length);
@@ -112,7 +107,7 @@ namespace AppCHAT
             }
 
             // Get permissions
-            btnSend.Text = "Getting permission...";
+            btnSendFile.Text = "Getting permission...";
             {
                 byte[] permission = new byte[1];
                 await ns.ReadAsync(permission, 0, 1);
@@ -125,7 +120,7 @@ namespace AppCHAT
             }
 
             // Sending
-            btnSend.Text = "Sending...";
+            btnSendFile.Text = "Sending...";
             progressBar1.Style = ProgressBarStyle.Continuous;
             int read;
             int totalWritten = 0;
@@ -165,10 +160,16 @@ namespace AppCHAT
                 File.Delete(Path.Combine("", filePath));
             compress = false;
         }
+
         #endregion
 
 
-        #region receive
+        #region receive file
+
+        private void resetControls1()
+        {
+            progressBar1.Style = ProgressBarStyle.Marquee;
+        }
 
         public static byte[] DecompressBytes(byte[] bytes)
         {
@@ -184,11 +185,10 @@ namespace AppCHAT
                 }
             }
         }
-
         protected override async void OnShown(EventArgs e)
         {
             // Listen
-            TcpListener listener = TcpListener.Create(port);
+            TcpListener listener = TcpListener.Create(PORT);
             listener.Start();
             TcpClient client = await listener.AcceptTcpClientAsync();
             NetworkStream ns = client.GetStream();
@@ -265,6 +265,10 @@ namespace AppCHAT
             //
             else
                 MessageBox.Show("File successfully received");
+            resetControls1();
+
+            //for keep sending and receiving files:
+            this.Refresh();
         }
 
         #endregion

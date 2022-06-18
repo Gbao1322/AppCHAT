@@ -35,7 +35,7 @@
             // 
             // pnlChat
             // 
-            this.pnlChat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlChat.BackColor = System.Drawing.Color.White;
             this.pnlChat.Location = new System.Drawing.Point(145, 0);
             this.pnlChat.Name = "pnlChat";
             this.pnlChat.Size = new System.Drawing.Size(610, 490);
@@ -50,18 +50,19 @@
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(0, 0);
+            this.btnScan.BackgroundImage = global::AppCHAT.Properties.Resources.refresh;
+            this.btnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScan.Location = new System.Drawing.Point(34, -1);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(140, 45);
+            this.btnScan.Size = new System.Drawing.Size(82, 45);
             this.btnScan.TabIndex = 4;
-            this.btnScan.Text = "SCAN";
             this.btnScan.UseVisualStyleBackColor = true;
             // 
             // history
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackColor = System.Drawing.Color.IndianRed;
             this.ClientSize = new System.Drawing.Size(755, 490);
             this.Controls.Add(this.pnlChat);
             this.Controls.Add(this.pnlBuddy);
